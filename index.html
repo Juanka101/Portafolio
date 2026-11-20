@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171021">
+  <meta
+    name="description"
+    content="Portafolio de Juan Ignacio Irastorza, desarrollador junior y creador de Nexum Gestión."
+  >
+  <title>Juan Ignacio Irastorza · Portafolio</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./desktop.js" defer></script>
+  <!-- Estilos para mostrar el contenido si JavaScript esta desactivado. -->
+  <noscript>
+    <style>
+      body {
+        overflow: auto;
+      }
+
+      .desktop {
+        display: grid;
+        gap: 1rem;
+        height: auto;
+        padding: 1rem;
+        overflow: visible;
+      }
+
+      .desktop .window[data-window] {
+        display: block !important;
+        position: static;
+        width: min(100%, 61.25rem);
+        max-width: none;
+        max-height: none;
+        margin-inline: auto;
+      }
+      .shortcuts,
+      .system-time,
+      .hero .actions,
+      .featured,
+      .taskbar {
+        display: none;
+      }
+    </style>
+  </noscript>
+</head>
+<body>
+  <!-- Los controles HTML y JavaScript reutilizan estos iconos con <use>. -->
+  <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-grid" viewBox="0 0 24 24">
+      <rect x="3.5" y="3.5" width="6" height="6" rx="1.2" />
+      <rect x="14.5" y="3.5" width="6" height="6" rx="1.2" />
+      <rect x="3.5" y="14.5" width="6" height="6" rx="1.2" />
+      <rect x="14.5" y="14.5" width="6" height="6" rx="1.2" />
+    </symbol>
+    <symbol id="i-user" viewBox="0 0 24 24">
+      <circle cx="12" cy="8" r="3.2" />
+      <path d="M5 20v-1.5a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5V20z" />
+    </symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24">
+      <path d="M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+      <path d="M3 10h18" />
+    </symbol>
+    <symbol id="i-code" viewBox="0 0 24 24">
+      <path d="m8.5 6-6 6 6 6m7-12 6 6-6 6m-2-14-3 16" />
+    </symbol>
+    <symbol id="i-file" viewBox="0 0 24 24">
+      <path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6m-6 4h6" />
+    </symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24">
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="m4 7 8 6 8-6" />
+    </symbol>
+    <symbol id="i-window" viewBox="0 0 24 24">
+      <rect x="3" y="4" width="18" height="16" rx="2" />
+      <path d="M3 9h18M7 6.5h.1m3 0h.1" />
+    </symbol>
+    <symbol id="i-db" viewBox="0 0 24 24">
+      <ellipse cx="12" cy="6" rx="7.5" ry="3" />
+      <path d="M4.5 6v12c0 4 15 4 15 0V6M4.5 12c0 4 15 4 15 0" />
+    </symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="18" height="18" rx="3" />
+      <path d="M8 10v6m0-8h.01m4 8v-6m0 2.5c0-3 4-3 4 0V16" />
+    </symbol>
+    <symbol id="i-min" viewBox="0 0 24 24">
+      <path d="M6 12h12" />
+    </symbol>
+    <symbol id="i-max" viewBox="0 0 24 24">
+      <rect x="6" y="6" width="12" height="12" rx="1.5" />
+    </symbol>
+    <symbol id="i-restore" viewBox="0 0 24 24">
+      <rect x="5" y="9" width="10" height="10" rx="1.5" />
+      <path d="M9 9V6.5A1.5 1.5 0 0 1 10.5 5h7A1.5 1.5 0 0 1 19 6.5v7a1.5 1.5 0 0 1-1.5 1.5H15" />
+    </symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24">
+      <path d="M4 9V4h5m11 5V4h-5M4 15v5h5m11-5v5h-5" />
+    </symbol>
+    <symbol id="i-close" viewBox="0 0 24 24">
+      <path d="m7 7 10 10M17 7 7 17" />
+    </symbol>
+  </svg>
+
+  <!-- Barra superior con la fecha y la hora de Argentina. -->
+  <header class="system-bar">
+    <div class="desktop-brand">
+      <span class="brand-mark">JI</span>
+      <span>Escritorio personal</span>
+    </div>
+    <div class="system-time">
+      <span id="date"></span>
+      <time id="clock" aria-label="Hora en Argentina"></time>
+    </div>
+  </header>
+
+  <main class="desktop" id="desktop" aria-label="Escritorio del portafolio">
+    <!-- Cada acceso abre la ventana indicada por su atributo data-open. -->
+    <nav class="shortcuts" aria-label="Accesos del escritorio">
+      <button class="shortcut" type="button" data-open="perfil">
+        <span class="app-icon plum"><svg aria-hidden="true"><use href="#i-user" /></svg></span>
+        <span>Sobre mí</span>
+      </button>
+      <button class="shortcut" type="button" data-open="proyectos">
+        <span class="app-icon amber"><svg aria-hidden="true"><use href="#i-folder" /></svg></span>
+        <span>Proyecto</span>
+      </button>
+      <button class="shortcut" type="button" data-open="habilidades">
+        <span class="app-icon blue"><svg aria-hidden="true"><use href="#i-code" /></svg></span>
+        <span>Habilidades</span>
+      </button>
+      <button class="shortcut" type="button" data-open="cv">
+        <span class="app-icon mint"><svg aria-hidden="true"><use href="#i-file" /></svg></span>
+        <span>CV</span>
+      </button>
+      <button class="shortcut" type="button" data-open="contacto">
+        <span class="app-icon pink"><svg aria-hidden="true"><use href="#i-mail" /></svg></span>
+        <span>Contacto</span>
+      </button>
+    </nav>
+
+    <!-- El valor de cada data-window coincide con el data-open de sus accesos. -->
+    <section
+      class="window welcome-window"
+      id="window-perfil"
+      data-window="perfil"
+      data-icon="user"
+      data-title="Sobre mí"
+      aria-labelledby="nombre"
+    >
+      <div class="window-body">
+        <div class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">PORTAFOLIO PERSONAL</p>
+            <h1 id="nombre">Juan Ignacio<br>Irastorza<span>.</span></h1>
+            <p class="role">Desarrollador junior <span>·</span> Python y SQL</p>
+            <p class="intro">
+              Soy técnico en Tecnologías de Programación. Desarrollé Nexum Gestión,
+              una aplicación de escritorio para la gestión comercial.
+            </p>
+            <div class="actions">
+              <button class="primary" data-open="proyectos" type="button">
+                <svg aria-hidden="true"><use href="#i-folder" /></svg>
+                Ver Nexum
+              </button>
+              <button class="secondary" data-open="cv" type="button">
+                <svg aria-hidden="true"><use href="#i-file" /></svg>
+                Abrir CV
+              </button>
+            </div>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="art-orbit orbit-one"></div>
+            <div class="art-orbit orbit-two"></div>
+            <div class="art-orbit orbit-three"></div>
+            <span class="art-spark spark-top">+</span>
+            <span class="art-spark spark-bottom">+</span>
+            <div class="code-window">
+              <div class="code-bar">
+                <div class="code-lights"><i></i><i></i><i></i></div>
+                <span>portfolio.py</span>
+              </div>
+              <div class="code-lines">
+                <span><i>1</i><b>class</b> <em>Juan</em>:</span>
+                <span><i>2</i>&nbsp;&nbsp;&nbsp;&nbsp;rol = <strong>"Desarrollador junior"</strong></span>
+                <span><i>3</i>&nbsp;&nbsp;&nbsp;&nbsp;stack = [<strong>"Python"</strong>, <strong>"SQL"</strong>]</span>
+                <span><i>4</i>&nbsp;&nbsp;&nbsp;&nbsp;foco = <strong>"Software y datos"</strong></span>
+              </div>
+            </div>
+            <span class="art-label">
+              <svg aria-hidden="true"><use href="#i-code" /></svg>
+              Software y datos
+            </span>
+          </div>
+        </div>
+        <div class="featured">
+          <h2>Proyecto destacado</h2>
+          <button class="project-shortcut" data-open="proyectos" type="button">
+            <span class="mini-icon amber"><svg aria-hidden="true"><use href="#i-window" /></svg></span>
+            <span>
+              <strong>Nexum Gestión</strong>
+              <small>Aplicación de escritorio para Windows</small>
+            </span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ficha de Nexum. El enlace abre la imagen. -->
+    <section
+      class="window content-window project-window"
+      id="window-proyectos"
+      data-window="proyectos"
+      data-icon="folder"
+      data-title="Proyecto"
+      aria-labelledby="proyecto-gestion-titulo"
+      hidden
+    >
+      <div class="window-body">
+        <article class="project-view">
+          <div>
+            <p class="eyebrow">PROYECTO FREELANCE</p>
+            <h2 id="proyecto-gestion-titulo">Nexum Gestión</h2>
+            <p class="project-copy">
+              Aplicación de escritorio que reúne compras, ventas, gastos, inventario,
+              producción, caja y reportes. Incluye un sistema de licencias y un instalador
+              para Windows.
+            </p>
+            <ul class="tags">
+              <li>Windows</li>
+              <li>Gestión comercial</li>
+            </ul>
+          </div>
+          <figure class="project-figure">
+            <a
+              class="project-preview"
+              href="./media/nexum-gestion.webp"
+              data-zoom
+              aria-label="Ampliar captura de Nexum Gestión"
+            >
+              <img
+                src="./media/nexum-gestion.webp"
+                width="1917"
+                height="1075"
+                alt="Menú principal de Nexum Gestión con accesos a compras, ventas, gastos y stock disponible."
+                loading="lazy"
+                decoding="async"
+              >
+              <span class="zoom-icon" aria-hidden="true">
+                <svg aria-hidden="true"><use href="#i-expand" /></svg>
+              </span>
+            </a>
+            <figcaption>Captura real del menú principal de Nexum Gestión</figcaption>
+          </figure>
+        </article>
+      </div>
+    </section>
+
+    <!-- Las habilidades se agrupan por area. -->
+    <section
+      class="window content-window"
+      id="window-habilidades"
+      data-window="habilidades"
+      data-icon="code"
+      data-title="Habilidades"
+      aria-labelledby="habilidades-titulo"
+      hidden
+    >
+      <div class="window-body content">
+        <p class="eyebrow">TECNOLOGÍAS</p>
+        <h2 id="habilidades-titulo">Habilidades</h2>
+        <div class="skill-grid">
+          <section class="info-card">
+            <span class="mini-icon plum"><svg aria-hidden="true"><use href="#i-code" /></svg></span>
+            <h3>Desarrollo</h3>
+            <ul class="tags">
+              <li>Python</li>
+              <li>Flask</li>
+              <li>JavaScript</li>
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>APIs REST</li>
+              <li>JWT</li>
+            </ul>
+          </section>
+          <section class="info-card">
+            <span class="mini-icon blue"><svg aria-hidden="true"><use href="#i-db" /></svg></span>
+            <h3>Datos</h3>
+            <ul class="tags">
+              <li>SQL avanzado</li>
+              <li>MySQL</li>
+              <li>SQLite</li>
+              <li>Pandas</li>
+              <li>scikit-learn</li>
+              <li>Plotly</li>
+            </ul>
+          </section>
+          <section class="info-card">
+            <span class="mini-icon amber"><svg aria-hidden="true"><use href="#i-window" /></svg></span>
+            <h3>Herramientas</h3>
+            <ul class="tags">
+              <li>Git</li>
+              <li>GitHub</li>
+              <li>Jupyter</li>
+              <li>Tkinter</li>
+              <li>PyInstaller</li>
+              <li>Inno Setup</li>
+            </ul>
+          </section>
+          <section class="info-card">
+            <span class="mini-icon mint"><svg aria-hidden="true"><use href="#i-mail" /></svg></span>
+            <h3>Idiomas</h3>
+            <ul class="tags">
+              <li>Español nativo</li>
+              <li>Inglés B1</li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resumen de la formacion y enlace a la version imprimible del CV. -->
+    <section
+      class="window content-window"
+      id="window-cv"
+      data-window="cv"
+      data-icon="file"
+      data-title="Currículum"
+      aria-labelledby="cv-titulo"
+      hidden
+    >
+      <div class="window-body content">
+        <p class="eyebrow">CURRÍCULUM</p>
+        <h2 id="cv-titulo">Formación y perfil</h2>
+        <p class="section-intro">
+          Desarrollador junior y creador de Nexum Gestión. Busco oportunidades de trabajo
+          remoto desde Argentina.
+        </p>
+        <div class="education">
+          <div>
+            <h3>Técnico en Tecnologías de Programación</h3>
+            <p>Universidad Provincial del Sudoeste (UPSO)</p>
+          </div>
+          <div>
+            <h3>Técnico en Informática</h3>
+            <p>Instituto San José, Coronel Dorrego · Egreso 2022</p>
+          </div>
+        </div>
+        <a class="primary" href="./cv.html">
+          <svg aria-hidden="true"><use href="#i-file" /></svg>
+          Ver CV imprimible
+        </a>
+      </div>
+    </section>
+
+    <!-- Canales de contacto y perfil profesional. -->
+    <section
+      class="window content-window contact-window"
+      id="window-contacto"
+      data-window="contacto"
+      data-icon="mail"
+      data-title="Contacto"
+      aria-labelledby="contacto-titulo"
+      hidden
+    >
+      <div class="window-body content">
+        <p class="eyebrow">CONTACTO</p>
+        <h2 id="contacto-titulo">Conectemos</h2>
+        <p class="section-intro">
+          Estoy en Coronel Dorrego, Buenos Aires, Argentina. Si tenés una oportunidad
+          remota en desarrollo o datos, podés escribirme por LinkedIn.
+        </p>
+        <a
+          class="primary"
+          href="https://www.linkedin.com/in/juan-ignacio-irastorza-159143207"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg aria-hidden="true"><use href="#i-linkedin" /></svg>
+          Abrir LinkedIn
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- desktop.js copia esta plantilla para crear los controles de cada ventana. -->
+  <template id="window-titlebar-template">
+    <div class="titlebar">
+      <span class="titlebar-label" tabindex="-1">
+        <svg aria-hidden="true"><use></use></svg>
+        <span data-window-name></span>
+      </span>
+      <div class="window-controls">
+        <button type="button" data-action="minimize" title="Minimizar">
+          <svg aria-hidden="true"><use href="#i-min" /></svg>
+        </button>
+        <button type="button" data-action="maximize" title="Maximizar">
+          <svg aria-hidden="true"><use href="#i-max" /></svg>
+        </button>
+        <button type="button" data-action="close" title="Cerrar">
+          <svg aria-hidden="true"><use href="#i-close" /></svg>
+        </button>
+      </div>
+    </div>
+  </template>
+
+  <!-- El script genera los botones de la barra y del menu a partir de las ventanas. -->
+  <footer class="taskbar">
+    <div class="dock">
+      <button
+        type="button"
+        id="start-button"
+        class="dock-button start-button"
+        aria-label="Menú de inicio"
+        aria-expanded="false"
+        aria-controls="start-menu"
+        title="Inicio"
+      >
+        <svg aria-hidden="true"><use href="#i-grid" /></svg>
+      </button>
+      <span class="dock-divider"></span>
+      <nav id="dock-apps" aria-label="Aplicaciones del escritorio"></nav>
+    </div>
+    <div id="start-menu" class="start-menu" hidden>
+      <div class="menu-header">
+        <span class="brand-mark">JI</span>
+        <div>
+          <strong>Juan Ignacio Irastorza</strong>
+          <small>Portafolio personal</small>
+        </div>
+      </div>
+      <nav id="menu-apps" aria-label="Menú de inicio"></nav>
+    </div>
+  </footer>
+
+  <!-- Visor que se abre al seleccionar la captura de Nexum. -->
+  <dialog class="image-viewer" id="image-viewer" aria-labelledby="image-viewer-title">
+    <div class="image-viewer-bar">
+      <h2 id="image-viewer-title">Nexum Gestión</h2>
+      <form method="dialog">
+        <button type="submit" autofocus aria-label="Cerrar imagen">
+          <svg aria-hidden="true"><use href="#i-close" /></svg>
+        </button>
+      </form>
+    </div>
+    <img
+      id="image-viewer-media"
+      src="./media/nexum-gestion.webp"
+      width="1917"
+      height="1075"
+      alt="Menú principal de Nexum Gestión con accesos a compras, ventas, gastos y stock disponible."
+      loading="lazy"
+      decoding="async"
+    >
+  </dialog>
+</body>
+</html>

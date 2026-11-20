@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta
+    name="description"
+    content="Currículum de Juan Ignacio Irastorza, desarrollador junior y creador de Nexum Gestión."
+  >
+  <meta name="theme-color" content="#f2edf2">
+  <title>CV · Juan Ignacio Irastorza</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./cv.css">
+  <noscript><style>#print { display: none; }</style></noscript>
+</head>
+<body>
+  <nav class="actions" aria-label="Acciones del currículum">
+    <a href="./index.html#cv">Volver al portafolio</a>
+    <button id="print" type="button">Imprimir o guardar PDF</button>
+  </nav>
+  <main class="paper">
+    <header>
+      <h1>Juan Ignacio Irastorza</h1>
+      <p class="role">Técnico en Tecnologías de Programación · Desarrollador junior</p>
+      <div class="contact">
+        <span>Coronel Dorrego, Buenos Aires, Argentina</span>
+        <a href="https://www.linkedin.com/in/juan-ignacio-irastorza-159143207">
+          linkedin.com/in/juan-ignacio-irastorza-159143207
+        </a>
+      </div>
+    </header>
+
+    <section aria-labelledby="perfil">
+      <h2 id="perfil">Perfil</h2>
+      <p>
+        Soy técnico en Tecnologías de Programación y desarrollé Nexum Gestión,
+        una aplicación de escritorio para la gestión comercial. Me interesa
+        crear herramientas útiles y fáciles de mantener.
+      </p>
+    </section>
+
+    <section aria-labelledby="proyectos">
+      <h2 id="proyectos">Proyecto destacado</h2>
+      <article>
+        <h3>Nexum Gestión <span class="kind">· Proyecto freelance</span></h3>
+        <p>
+          Aplicación de escritorio para compras, ventas, gastos, stock,
+          producción, caja e informes. Incluye un sistema de licencias y un
+          instalador para Windows.
+        </p>
+      </article>
+    </section>
+
+    <div class="details">
+      <section aria-labelledby="formacion">
+        <h2 id="formacion">Formación</h2>
+        <ul>
+          <li>
+            <strong>Técnico en Tecnologías de Programación</strong><br>
+            Universidad Provincial del Sudoeste (UPSO)
+          </li>
+          <li>
+            <strong>Técnico en Informática</strong><br>
+            Instituto San José, Coronel Dorrego · 2022
+          </li>
+        </ul>
+      </section>
+      <section aria-labelledby="habilidades">
+        <h2 id="habilidades">Habilidades</h2>
+        <ul>
+          <li><strong>Desarrollo:</strong> Python, Flask, JavaScript, HTML, CSS, POO, APIs REST y JWT</li>
+          <li><strong>Datos:</strong> SQL avanzado, MySQL, SQLite, Pandas y scikit-learn</li>
+          <li><strong>Herramientas:</strong> Git, GitHub, Tkinter, Jupyter, Plotly, PyInstaller e Inno Setup</li>
+        </ul>
+      </section>
+      <section aria-labelledby="idiomas">
+        <h2 id="idiomas">Idiomas</h2>
+        <p>Español nativo · Inglés B1 intermedio</p>
+      </section>
+    </div>
+  </main>
+  <script>
+    const printButton = document.getElementById("print");
+    printButton.addEventListener("click", () => window.print());
+  </script>
+</body>
+</html>
